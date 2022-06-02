@@ -1,0 +1,63 @@
+Codigo HTML:
+
+<!--Esta es la barra de navegacion-->
+
+    <ul class="side-menu">
+        <li><a href="#"><div class="Centrado" ><img class="ImagenesIconos" src="prueba.png"><p>Lista de la Compra</p></div></a></li>
+        <li><a href="#"><div class="Centrado" ><img class="ImagenesIconos" src="shopping-cart.png"><p>Compras Frecuentes</p></div></a></li>
+        <li><a href="#"><div class="Centrado" ><img class="ImagenesIconos" src="supermarket.png"><p>Mercado</p></div></a></li>
+    </ul>
+
+<!--Fin de la barra de navegacion-->
+
+
+Codigo CSS:
+
+/*************************** Barra de navegacion ****************************/
+.ImagenesIconos {
+    width: 35px;
+    margin: 10px 25px;  
+}
+
+.side-menu {
+  font-family: 'Lobster', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 68px;
+  list-style-type: none;
+  background: #907486;
+  overflow: hidden;
+  transition: width .3s;
+}
+
+.side-menu:hover {
+  width: 300px;
+}
+
+.side-menu li {
+  width: 300px;
+}
+
+.side-menu li span {
+  font-size: 1rem;
+  margin: 20px 30px 0 22px;
+}
+
+.side-menu li a {
+  display: block;
+  font-size: .9rem;
+  text-decoration: none;
+  color: #FFF;
+  height: 60px;
+}
+
+.side-menu li a:hover,
+.side-menu li:first-child a {
+  background: #14081d;
+  display: block;
+}
+/****************** Fin de Barra de Navegacion *****************************/
