@@ -60,4 +60,16 @@ Codigo CSS:
   background: #14081d;
   display: block;
 }
+
+p {
+    display: inline-block;
+
+}
+
+.Centrado {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
 /****************** Fin de Barra de Navegacion *****************************/
