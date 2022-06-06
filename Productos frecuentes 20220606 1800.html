@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="productosStyle.css">
+</head>
+
+<body>
+    <!-- div con menú lateral -->
+    <div>
+        <ul class="side-menu">
+            <li><a href="#">
+                    <div class="Centrado"><img class="ImagenesIconos" src="prueba.png">
+                        <p>Lista de la Compra</p>
+                    </div>
+                </a></li>
+            <li><a href="#">
+                    <div class="Centrado"><img class="ImagenesIconos" src="shopping-cart.png">
+                        <p>Compras Frecuentes</p>
+                    </div>
+                </a></li>
+            <li><a href="#">
+                    <div class="Centrado"><img class="ImagenesIconos" src="supermarket.png">
+                        <p>Mercado</p>
+                    </div>
+                </a></li>
+        </ul>
+    </div>
+    <!-- cuerpo de la página -->
+    <div id="contenidoProductos">
+        <h2>Tus compras habituales </h2>
+        <div id="listaProductos">
+            <table id="table">
+                <tbody>
+                </tbody>
+                    <tfoot>
+                        <td>
+                            <input type="text" placeholder="Añade un nuevo producto" id="addProduct">
+                        </td>
+                        <td id="input">
+                            <select name="supermarket" id="selectSupermarket" class="select">
+                                <option hidden disabled selected value> Elige un supermercado </option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="precio" id="productPrice" placeholder="Precio">
+                        </td>
+                        <td>
+                            <button id="sendToList" onclick="saveProduct()">Enviar a la lista</button>
+                        </td>
+                    </tfoot>
+            </table>
+</body>
+
+<script>
+   // para crear las opciones de select desde un array
+        var supermercados = ["mercadona", "lidl", "dia", "carrefour", "ahorramas"];
+        var select = document.getElementById("selectSupermarket")
+        for (var i = 0; i < supermercados.length; i++) {
+            var option = document.createElement("option");
+            option.value = supermercados[i];
+            option.text = supermercados[i];
+            select.appendChild(option);
+        }
+    
+
+    // function abrirModal() {
+    //     document.getElementById("modal1").style.display = "block"
+    //     document.getElementById("addProductButton").style.display = "none"
+    // }
+
+    function borrar(e) {
+        if (window.confirm("se va a eliminar")) {
+            e.parentNode.parentNode.remove();
+        }
+    }
+
+    var productList = []
+
+    function saveProduct(e) {
+        var product = document.getElementById("addProduct").value;
+        var supermarket = document.getElementById("selectSupermarket").value;
+        var price = document.getElementById("productPrice").value;
+        storeProduct(product, supermarket, price)
+        drawTable()
+        event.preventDefault(e)
+    }
+
+
+    function drawTable() {
+        var list = getProductList();
+        var table = document.getElementById("table");
+        table.style.display = "block"
+        var tbody = document.getElementById("tbody");
+        if (tbody !== null) {
+            tbody.remove();
+        }
+        tbody = document.createElement("tbody")
+        tbody.id = "tbody"
+        table.appendChild(tbody)
+
+        for (let i = 0; i < list.length; i++) {
+            var row = table.insertRow(i);
+            var productRow = row.insertCell(0);
+            productRow.innerHTML = list[i].product
+            var supermarketRow = row.insertCell(1);
+            supermarketRow.innerHTML = list[i].supermarket
+            var priceRow = row.insertCell(2);
+            priceRow.innerHTML = list[i].price + " €"
+            var sendIconRow = row.insertCell(3);
+            sendIconRow.innerHTML = '<svg class="svg-icon" viewBox="0 0 18 18"><path d="M17.218,2.268L2.477,8.388C2.13,8.535,2.164,9.05,2.542,9.134L9.33,10.67l1.535,6.787c0.083,0.377,0.602,0.415,0.745,0.065l6.123-14.74C17.866,2.46,17.539,2.134,17.218,2.268 M3.92,8.641l11.772-4.89L9.535,9.909L3.92,8.641z M11.358,16.078l-1.268-5.613l6.157-6.157L11.358,16.078z"></path></svg>'
+            var deleteRow = row.insertCell(4);
+            deleteRow.innerHTML = '<svg class="svg-icon" onclick="borrar(this)" viewBox="0 0 24 24"><path d="M 10 2 L 9 3 L 3 3 L 3 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"></path></svg>'
+            tbody.appendChild(row)
+        }
+
+    }
+
+    function storeProduct(productp, supermarketp, pricep) {
+        var newProduct = {
+            'product': productp,
+            'supermarket': supermarketp,
+            'price': pricep
+        }
+        productList.push(newProduct);
+    }
+
+    function getProductList() {
+        return productList
+    }
+
+
+
+
+</script>
+
+</html>
