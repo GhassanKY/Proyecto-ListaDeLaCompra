@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='EstiloListaDeLaCompra.css'>
+</head>
+<body>
+
+
+
+<!--Barra de navegacion-->
+    <ul class="side-menu">
+        <li><a href="#"><div class="Centrado" ><img class="ImagenesIconos" src="prueba.png"><p>Lista de la Compra</p></div></a></li>
+        <li><a href="#"><div class="Centrado" ><img class="ImagenesIconos" src="shopping-cart.png"><p>Compras Frecuentes</p></div></a></li>
+        <li><a href="#"><div class="Centrado" ><img class="ImagenesIconos" src="supermarket.png"><p>Mercado</p></div></a></li>
+    </ul>
+<!--Fin de la barra de navegacion-->
+
+
+
+<!--Boton de HELP-->
+<div id="help">
+    <img src="help.png">
+</div>
+<!-- FIN Boton de HELP-->
+
+
+
+<!--Encabezado de la pagina-->
+<h1 class="TituloPrincipal">Lista de la Compra</h1>
+<div class="Caja-Lista">
+<!--FIN Encabezado de la pagina-->
+
+
+
+
+<!--Lista de Tarea con Hora-->
+<div class="list roundBorder">
+    <div class="date">
+        <div class="dateRight">
+            <div id="dateNumber"></div>
+            <div>
+                <div id="dateMonth"></div>
+                <div id="dateYear"></div>
+            </div>
+        </div>
+        <div id="dateText"></div>
+    </div>
+    <form onsubmit="addNewTask(event)" >
+        <input type="text" id="taskText" autocomplete="off" placeholder="Nueva tarea" class="roundBorder">
+        <button type="submit" class="addTaskButton">+</button>
+        <button type="button" class="orderButton roundBorder" onclick="renderOrderedTasks()">Ordenar</button>
+    </form>
+    <div id="tasksContainer"></div>
+</div>
+<!--FIN de Lista de Tarea con Hora-->
+</div>
+
+
+<script src='Funcionalidad.js'></script>
+</body>
+</html>
