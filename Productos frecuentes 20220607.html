@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="productosStyle.css">
+</head>
+
+<body>
+    <!-- div con menú lateral -->
+    <div>
+        <ul class="side-menu">
+            <li class="selected"><a href="#">
+                    <div class="Centrado"><img class="ImagenesIconos" src="prueba.png">
+                        <p>Lista de la Compra</p>
+                    </div>
+                </a></li>
+            <li><a href="#">
+                    <div class="Centrado"><img class="ImagenesIconos" src="shopping-cart.png">
+                        <p>Compras Frecuentes</p>
+                    </div>
+                </a></li>
+            <li><a href="#">
+                    <div class="Centrado"><img class="ImagenesIconos" src="supermarket.png">
+                        <p>Mercado</p>
+                    </div>
+                </a></li>
+        </ul>
+    </div>
+    <!-- cuerpo de la página -->
+    <div id="contenidoProductos">
+        <h2>Tus compras habituales </h2>
+        <div id="listaProductos">
+            <table id="table">
+                <tbody>
+                </tbody>
+            </table>
+            <div id="inputProducts">
+                <input type="text" placeholder="Añade un nuevo producto" id="addProduct">
+                <select name="supermarket" id="selectSupermarket" class="select"
+                    onchange="showPrice(this, 'productPrice')">
+                    <option hidden disabled selected value>Supermercado</option>
+                </select>
+                <input type="number" name="precio" id="productPrice" placeholder="Precio" style="display:none">
+                <button id="sendToListButton" onclick="saveProduct()">Añadir</button>
+            </div>
+            <div id="modal1" class="modal">
+                <div id="newProductForm">
+                    <form id="addNewProduct" onsubmit="">
+                        <input type="text" placeholder="Añade un nuevo producto" id="addProductModal">
+                        <select name="supermarket" id="modalSelect" class="select"
+                            onchange="showPrice(this, 'productPriceModal')">
+                            <option disabled hidden selected value=""> Supermercado </option>
+                        </select>
+                        <input type="number" name="precio" id="productPriceModal" placeholder="Precio"
+                            style="display:none">
+                        <button id="sendToListButtonModal" onclick="saveProduct()">Enviar a la lista</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        <button id="addProductButton" onclick="abrirModal()">+</button>
+</body>
+
+<script>
+    var productList = []
+    // Cojo los supermercados desde un array y los convierto en opciones del select 
+    var supermercados = ["mercadona", "lidl", "dia", "carrefour"];
+
+    //Recupero mis dos select (talba y modal)
+    var select = document.getElementById("selectSupermarket")
+    var selectModal = document.getElementById("modalSelect")
+
+    addSelectOptions(supermercados, select)
+    addSelectOptions(supermercados, selectModal)
+
+    function addSelectOptions(supermercados, select) {
+        for (var i = 0; i < supermercados.length; i++) {
+            var option = document.createElement("option");
+            option.value = supermercados[i];
+            option.text = supermercados[i];
+            select.add(option)
+        }
+    }
+
+
+
+    function abrirModal() {
+        document.getElementById("modal1").style.display = "block"
+    }
+
+    function borrar(e) {
+        if (window.confirm("se va a eliminar")) {
+            e.parentNode.parentNode.remove();
+        }
+    }
+
+
+    function saveProduct(e) {
+        var product = document.getElementById("addProduct").value;
+        var supermarket = document.getElementById("selectSupermarket").value;
+        var price = document.getElementById("productPrice").value;
+        var modal = document.getElementById("modal1")
+        if (modal.style.display == 'block') {
+            product = document.getElementById("addProductModal").value;
+            supermarket = document.getElementById("modalSelect").value;
+            price = document.getElementById("productPriceModal").value;
+        }
+        if (!product) {
+            alert("Introduce un producto")
+        } else {
+            storeProduct(product, supermarket, price)
+            drawTable()
+        }
+        event.preventDefault(e)
+        resetInput()
+
+    }
+
+
+    function drawTable() {
+        productList
+        var table = document.getElementById("table");
+        table.style.display = "block"
+        var tbody = document.getElementById("tbody");
+        if (tbody !== null) {
+            tbody.remove();
+        }
+        tbody = document.createElement("tbody")
+        tbody.id = "tbody"
+        table.appendChild(tbody)
+
+        for (let i = 0; i < productList.length; i++) {
+            var row = table.insertRow(i);
+            var productRow = row.insertCell(0);
+            productRow.innerHTML = productList[i].product
+            var supermarketRow = row.insertCell(1);
+            supermarketRow.innerHTML = productList[i].supermarket
+            var priceRow = row.insertCell(2);
+            priceRow.innerHTML = productList[i].price + " €"
+            var sendIconRow = row.insertCell(3);
+            sendIconRow.classList.add("icons");
+            sendIconRow.innerHTML = '<svg class="svg-icon" viewBox="0 0 18 18"><path d="M17.218,2.268L2.477,8.388C2.13,8.535,2.164,9.05,2.542,9.134L9.33,10.67l1.535,6.787c0.083,0.377,0.602,0.415,0.745,0.065l6.123-14.74C17.866,2.46,17.539,2.134,17.218,2.268 M3.92,8.641l11.772-4.89L9.535,9.909L3.92,8.641z M11.358,16.078l-1.268-5.613l6.157-6.157L11.358,16.078z"></path></svg>'
+            var deleteRow = row.insertCell(4);
+            deleteRow.classList.add("icons");
+            deleteRow.innerHTML = '<svg class="svg-icon" onclick="borrar(this)" viewBox="0 0 24 24"><path d="M 10 2 L 9 3 L 3 3 L 3 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"></path></svg>'
+            tbody.appendChild(row)
+        }
+
+    }
+
+    function storeProduct(productp, supermarketp, pricep) {
+        var newProduct = {
+            'product': productp,
+            'supermarket': supermarketp,
+            'price': pricep
+        }
+        productList.push(newProduct);
+        localStorage.setItem('localProductList', JSON.stringify(productList))
+    }
+
+    function getProductList() {
+        storedList = localStorage.getItem('localProductList')
+        if (storedList == null) {
+            productList = [];
+        } else {
+            productList = JSON.parse(storedList);
+        }
+        return productList
+    }
+
+    function showPrice(that, productPrice) {
+        if (that.value !== 0) {
+            document.getElementById("productPrice").style.display = "block";
+        } else {
+            document.getElementById("productPrice").style.display = "none";
+        }
+    }
+
+    function showPrice(that, input) {
+        if (that.value !== 0) {
+            document.getElementById(input).style.display = "block";
+        } else {
+            document.getElementById(input).style.display = "none";
+        }
+    }
+
+    function resetInput() {
+        document.getElementById("modal1").style.display = "none";
+        document.getElementById("addProduct").value = "";
+        document.getElementById("selectSupermarket").value = "";
+        document.getElementById("productPrice").value = "";
+        document.getElementById("productPrice").style.display = "none";
+        document.getElementById("addProductModal").value = "";
+        document.getElementById("modalSelect").value = "";
+        document.getElementById("productPriceModal").value = "";
+        document.getElementById("productPriceModal").style.display = "none";
+    }
+
+
+
+
+
+</script>
+
+</html>
