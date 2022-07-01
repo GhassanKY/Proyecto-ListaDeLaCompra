@@ -1,4 +1,4 @@
-# Proyecto-1
+# Lista de la compra
 
 Colaboradores: AdrianMoratilla, FerNandaRM05, GhassanKY
 
