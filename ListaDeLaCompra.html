@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lista de la compra</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='EstiloListaDeLaCompra.css'>
+    <link rel="icon" type="image/x-icon" href="imagenes/list.png">
+    <script src="https://kit.fontawesome.com/ba10ce0731.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+
+<!--Barra de navegacion-->
+    <ul class="side-menu">
+        <li class="selected"><a href="ListaDeLaCompra.html"><div class="Centrado" ><img class="ImagenesIconos" src="imagenes/list.png"><p>Lista de la Compra</p></div></a></li>
+        <li class="no_selected"><a href="Productos_frecuentes.html"><div class="Centrado" ><img class="ImagenesIconos" src="imagenes/shopping-cart.png"><p>Compras Frecuentes</p></div></a></li>
+        <li class="no_selected"><a href="supermercados.html"><div class="Centrado" ><img class="ImagenesIconos" src="imagenes/supermarket.png"><p>Mercado</p></div></a></li>
+    </ul>
+<!--Fin de la barra de navegacion-->
+
+
+<!--Información sobre la página-->
+        <div id="help" onclick="prueba()">
+        <img src="imagenes/help.png">
+        </div>
+
+        <div id="modal1" class="modal">
+            <div id="instrucciones">
+            <img id="x" src="imagenes/x.png" >              
+            <h1>Instrucciones</h1>
+            <p id="pinstrucciones">Hola Bienvenido a tu lista de la compra 😄</p><br>
+            <ul>
+                <li>1. Para rellenar tu lista debes introducir una palabra dentro del cuadro de texto</li><br>
+                <li>2. Para marcar una tarea hecha debes seleccionar el checkbox y puedes desmarcarla para reutilizar este producto</li><br>
+                <li>3. También puedes seleccionar tus mercados donde más compras estos productos (Elige una tienda)</li><br>
+                <li>4. En el lateral derecho del cuadro de texto, cuentas con el filtro, esto te ayudará a categorizar tus productos por supermercados</li><br>
+                <li>5. Si deseas puedes eliminar tus productos ya comprados de la lista o dejarlos para más tarde</li><br>
+                <li>6. En el lateral izquierdo cuentas con un menú por el cual te puedes desplazar para navegar entre las distintas páginas</li><br>
+            </ul>
+            </div>
+        </div>
+<!--Fin de la Información sobre la página-->
+
+<!--Encabezado de la pagina-->
+<h1>Lista de la Compra</h1>
+<!--FIN Encabezado de la pagina-->
+
+
+<!--Lista de Productos-->
+<div class="Caja-Lista">
+<div class="list roundBorder">
+    <form onsubmit="addProduct()">
+        <input type="text" id="productText" autocomplete="off" placeholder="Nuevo Producto" class="roundBorder">
+        <button type="submit" onclick="addProduct()" class="addProductButton">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="Container">           
+            <select id="NombreSelect" name="NombreSelect" class="orderButton roundBorder">
+                <option value = "todos">todos</option>
+            </select>
+            <i class="fa-solid fa-filter fa-1.75x" ></i>
+        </div>
+    </form>
+    <div id="productsContainer"></div>
+</div>
+
+<div id="firstVisit" class="modal">
+        <div id="indicacion">
+            <h1>¡Hola!</h1>
+            <p>Parece que es la primera vez que usas la lista de la compra</p><br>
+            <p>El primer paso es añadir algún supermercado</p><br>
+            <a href="supermercados.html">¡Llévame!</a>
+        </div>
+    </div>
+<!--FIN de Lista de Produtos-->
+</div>
+
+
+<script src="ListaDeLaCompra.js"></script>
+
+</body>
+</html>

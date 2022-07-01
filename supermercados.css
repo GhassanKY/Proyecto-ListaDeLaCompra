@@ -1,0 +1,1056 @@
+/*************************** Esta Pagina es de la lista principal ****************************/
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Marvel&family=Noto+Sans+Display:ital,wght@0,500;1,400&display=swap');
+
+
+/*************************** Barra de navegacion ****************************/
+.ImagenesIconos {
+  width: 35px;
+  margin: 10px 25px;
+}
+
+.side-menu {
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 68px;
+  z-index: 20;
+  list-style-type: none;
+  background: #907486;
+  overflow: hidden;
+  transition: width .3s;
+}
+
+.side-menu:hover {
+  width: 300px;
+}
+
+.side-menu li {
+  width: 300px;
+}
+
+.no_selected:hover{
+  background-color: #bd8aab96;
+}
+
+.side-menu li span {
+  font-size: 1rem;
+  margin: 20px 30px 0 22px;
+}
+
+.side-menu li a {
+  display: block;
+  font-size: .9rem;
+  text-decoration: none;
+  color: #FFF;
+  height: 60px;
+}
+
+.selected {
+  background-color: #4e1658c9;
+  display: block;
+}
+
+.Centrado {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+/****************** Fin de Barra de Navegacion *****************************/
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 6vw;
+  color: #d62839;
+  margin: 20px;
+  text-align: center;
+}
+
+.Caja-Lista {
+  background-color: #fff6e5;
+  margin: 0 auto;
+  width: 45vw;
+  height: auto;
+  display: flex;
+}
+
+#tasksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/****** Boton Agregar, Colores y Estilos*******/
+.boton {
+  background-color: #d62839;
+  border-radius: 45px;
+  border: none;
+  padding: 15px;
+  font-size: 2.3vw;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.boton:hover {
+  opacity: 0.5;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/********Modal instrucciones estilo*********/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 25;
+  padding-top: 1vw;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#instrucciones {
+  background-color: #fff6e5;
+  width: 100%;
+  height: auto;
+  margin: 10px auto;
+}
+
+#instrucciones ul {
+  font-size: 1em;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 6vw;
+  margin: 2vw;
+  list-style: none;
+  padding: 0;
+}
+
+#instrucciones p{
+  font-family: lobster, sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+#x {
+  width: 4vw;
+  position: absolute;
+  left: 84%;
+  cursor: pointer;
+}
+
+/********Fin modal instrucciones estilo*********/
+
+/***************** Boton de HELP ******************/
+#help {
+  margin: 10px;
+}
+
+#help img {
+  width: 5vw;
+  position: fixed;
+  right: 0%;
+  margin-right: 50px;
+}
+
+#help img:hover {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+/***************** Fin Boton de HELP ******************/
+
+/********Caja de la Lista CSS*******/
+:root {
+  --primary: #A5C882;
+  --secondary: #D33F49;
+  --light: #fff;
+  --dark: #000;
+  --diabled: white;
+}
+
+body {
+  font-family: 'Lobster', sans-serif;
+  margin: 0;
+  height: auto;
+  background-color: #ffdff3;
+}
+
+*:first-letter {
+  text-transform: capitalize;
+}
+
+.roundBorder {
+  border-radius: 5px;
+}
+
+.list {
+  margin: 25px auto;
+  background-color: var(--light);
+  width: 100%;
+  max-width: 350px;
+}
+
+form {
+  margin: 20px 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto 35px auto;
+  grid-column-gap: 10vw;
+}
+
+.input {
+  border: none;
+  padding-left: 10px;
+  background-color: white;
+  border: solid black 2px;
+  width: 30vw;
+  height: 2vw;
+  margin: 1vw;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.addTaskButton,
+.orderButton {
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addTaskButton {
+  height: 5vw;
+  width: 5vw;
+  border-radius: 50%;
+  font-size: 18px;
+  background-color: white;
+  display: flex;
+  border: solid 2px black;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderButton {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+.task {
+  background-color: var(--primary);
+  padding: 15px;
+  margin-top: 15px;
+  width: 85%;
+  color: var(--light);
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.done {
+  background-color: var(--diabled);
+  text-decoration: line-through;
+  color: var(--dark);
+  border: solid 2px black;
+}
+
+.cerrar {
+  z-index: 5;
+  background-color: #FFF;
+  padding: 5px 2px 2px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: .2;
+  text-align: center;
+  font-size: 22px;
+  line-height: 10px;
+  right: 0%;
+  border-radius: 50%;
+  float: right;
+  position: relative;
+  margin-top: -13%;
+}
+
+.cerrar:hover {
+  opacity: 1;
+}
+
+.Form-Center {
+  display: flex;
+  justify-content: center;
+}
+
+.multiselect {
+  width: 150px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 150px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  background-color: #d33f49;
+  opacity: 1;
+  border-radius: 5px;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  flex-direction: column;
+  z-index: 5;
+  background-color: #fff;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+.CheckboxTexto {
+  margin-right: 15px;
+}
+
+.Float {
+  float: left;
+  display: flex;
+  flex-direction: column
+}
+.Container{
+  width: 130px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.fa-solid fa-filter fa-2x{
+  color: #ff1616;
+
+}
+
+.task2 {
+  background-color: var(--tertiary);
+  padding: 15px;
+  margin-top: 15px;
+  color: var(--light);
+  cursor: pointer;
+}
+
+/*Fin de la caja de la lista*/
+
+/*Responsive*/
+@media only screen and (min-width: 350px) {
+
+  .Caja-Lista {
+    background-color: #fff6e5;
+    margin: 0 auto;
+    width: 95vw;
+    height: auto;
+    display: flex;
+  }
+
+  .list {
+    margin: 25px auto;
+    background-color: var(--light);
+    width: 95%;
+    max-width: 100%;
+  }
+
+  @media only screen and (min-width: 550px) {
+
+    .Caja-Lista {
+      background-color: #fff6e5;
+      margin: 0 auto;
+      width: 75vw;
+      height: auto;
+      display: flex;
+    }
+  }
+
+  @media only screen and (min-width: 550px) {
+    .input {
+      border: none;
+      background-color: white;
+      border: solid black 2px;
+      width: 30vw;
+      height: 2vw;
+      margin: 1vw;
+    }
+  }
+}
+
+/*************************** Esta Pagina es de la lista de productos frecuentes ****************************/
+
+#contenidoProductos {
+  margin-left: 68px;
+}
+
+
+#listaProductos {
+  background-color: #fff6e5;
+  width: 70vw;
+  height: 60vh;
+  margin: 0 auto;
+  padding: 20px 0px;
+  text-align: center;
+  overflow-y: auto;
+  font-family: 'Popins', sans-serif;
+}
+
+.vacia{
+  background-image: url(imagenes/sadcart.png);
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.llena {
+  background-image: none;
+}
+
+#closeModal {
+  position: relative;
+  right: -50%;
+  top: -7%;
+  width: 35px;
+  cursor: pointer;
+}
+
+#inputProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+  width: 70%;
+  bottom: 5%;
+  background-color: #a30065b0;
+  color: white;
+  height: 80%;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+#checkboxContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  justify-content: start;
+  align-content: space-evenly;
+  max-width: 80%;
+  width: 80%;
+  height: auto;
+  max-height: 70%;
+  overflow-y: auto;
+}
+
+#checkboxContainer label {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 1.15rem;
+  width: 31%;
+}
+
+.productDetails {
+  display: flex;
+  margin: 2%;
+  padding: 20px;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: left;
+  width: 50%;
+}
+
+#inputText {
+  font-size: 1.2rem;
+}
+
+input[type=number] {
+  padding: 0 0.5em;
+  border-radius: 0.25em;
+  min-width: 4vw;
+  max-width: 20vw;
+  font-size: 1.15rem;
+  margin-left: 27%;
+  margin-top: 10px;
+  -moz-appearance: textfield;
+  width: 7vw;
+}
+
+/**************** Para quitar las flechas de subida del input numérico *******************/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/*********Para mostrar información on hover sobre los inconos ***********/
+.svg-icon {
+  width: 20px;
+  height: 20px;
+  fill: #fec741;
+  cursor: pointer;
+}
+
+#sendIconText,
+#deleteIconText {
+  display: none;
+  position: absolute;
+  width: 129px;
+  height: auto;
+  font-size: medium;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  margin: 2px;
+  right: 100px;
+}
+
+#sendIcon:hover~#sendIconText {
+  display: block;
+}
+
+#deleteIcon:hover~#deleteIconText {
+  display: block;
+}
+
+
+#addProduct {
+  /*margin: 20px 60px;*/
+  font-size: 1.25rem;
+  min-width: 20vw;
+  max-width: 70vw;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+}
+
+
+#productPrice {
+  margin: 2%;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  min-width: 6vw;
+  max-width: 10vw;
+  font-size: 1.25rem;
+}
+
+#supermarkets {
+  display: flex;
+  justify-content: space-around;
+}
+
+h4 {
+  text-align: center;
+}
+
+#addProductButtonBig {
+  margin-left: 48%;
+  margin-top: 2%;
+}
+
+
+#addProductButton {
+  display: none;
+  width: 100px;
+  cursor: pointer;
+  margin: 29px auto;
+}
+
+.icons {
+  width: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  position: relative;
+  margin: 0 auto;
+}
+
+th {
+  padding-left: 5px;
+  padding-bottom: 20px;
+  font-size: larger;
+  border-bottom: #14081d solid;
+  font-family: 'Lobster', cursive
+}
+
+tr {
+  border-bottom: #636363 solid 1px;
+  padding: 2px;
+}
+
+td {
+  max-width: fit-content;
+  width: 300px;
+  font-size: 1.2rem;
+}
+
+td>p {
+  height: 23.2px;
+}
+
+#inputRow {
+  height: 200px
+}
+
+/*******Responsive  para el side-menu y productos frecuentes*******/
+@media only screen and (max-width: 915px) {
+  .side-menu {
+    bottom: 0;
+    top: auto;
+    height: 60px;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .side-menu:hover {
+    width: 100%;
+  }
+
+  .side-menu p {
+    display: none
+  }
+
+  .Centrado {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  #contenidoProductos {
+    margin: 10px 10px;
+  }
+
+  #listaProductos {
+    width: 90vw;
+    height: 60vh;
+  }
+
+  #inputProducts {
+    width: 480px;
+    height: 560px;
+    margin: 0 auto;
+    margin-bottom: 30vw;
+  }
+
+  input[type=number] {
+    min-width: auto;
+    max-width: 13vw;
+  }
+
+  #checkboxContainer {
+    grid-template-columns: 1fr 1fr;
+    max-width: 90%;
+    width: 100%;
+  }
+
+  #addProductModal {
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-size: 1.25rem;
+    min-width: 20vw;
+    max-width: 70vw;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+  }
+
+  #sendIconText,
+  #deleteIconText {
+    right: 25px;
+  }
+
+  #productPriceModal {
+    margin: 10%;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    max-width: 60vw;
+    font-size: 1.25rem;
+  }
+
+  #addProductButton {
+    display: block;
+    position: absolute;
+    top: 6%;
+    right: 1%;
+    height: 70px;
+    width: 70px;
+    font-size: xx-large;
+    line-height: 35px;
+  }
+
+  #addProductButtonBig{
+    display: none;
+  }
+
+  #closeModal {
+    position: relative;
+    right: -51%;
+    top: -4%;
+  }
+
+}
+
+
+@media only screen and (max-width: 415px) {
+  .side-menu {
+    bottom: 0;
+    top: auto;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .side-menu:hover {
+    width: 100%
+  }
+
+  input[type=number] {
+    max-width: 25vw;
+    min-width: 22vw;
+  }
+
+  #contenidoProductos {
+    margin: 10px 10px;
+  }
+
+  #listaProductos {
+    width: auto;
+    max-height: 70vh;
+  }
+
+  #inputProducts {
+    width: 350px;
+    margin: auto;
+    height: 550px;
+    margin-bottom: 40vw;
+  }
+
+  #checkboxContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: space-evenly;
+    max-width: 80%;
+    width: 80%;
+    height: auto;
+    max-height: 70%;
+    overflow-y: auto;
+  }
+
+  #addProductModal {
+    margin-top: 20%;
+    margin-bottom: 10%;
+    min-width: 60vw;
+    max-width: 60vw;
+  }
+
+  #closeModal {
+    right: -50%;
+    top: -2%;
+  }
+
+  #productDetails {
+    display: flex;
+    margin: 2%;
+    padding: 20px;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    width: 50%;
+  }
+
+  #addProductButton {
+    display: block;
+    margin-top: 5%;
+    position: fixed;
+    top: 7%;
+    right: 2%;
+    height: 50px;
+    width: 50px;
+    font-size: xx-large;
+    line-height: 25px;
+  }
+}
+
+/*************************** Esta Pagina es de la lista de supermercados ****************************/
+html {
+  box-sizing: border-box;
+}
+
+#cuerpo {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: auto;
+}
+
+/*************Cuerpo*************/
+
+#centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#imgcentro {
+  width: 400px;
+  display: inline-flex;
+  margin: 10px;
+}
+
+#textocentro {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4vw;
+}
+
+#centro form {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+#centro input[type="text"] {
+  border: none;
+  border-bottom: 3px solid #fec741;
+  background-color: #ffdff3;
+  margin: 20px;
+  width: 60vw;
+  font-size: 1.75em;
+  text-align: center
+}
+
+
+#contenedor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 15vw;
+}
+
+#caja {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 200px;
+  width: auto;
+  padding: 1vw;
+}
+
+/***********Supermercados agregados*************/
+.logosupermercados {
+  width: 10vw;
+  height: auto;
+  margin: 15px;
+}
+
+.otro {
+  position: relative;
+  display: inline-block;
+  background-image: url(imagenes/otro.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: auto;
+  margin: 1.5vw;
+}
+
+.otro p {
+  position: relative;
+  bottom: -85%;
+  left: 10%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3vw;
+}
+
+#lidl {
+  position: relative;
+  display: inline-block;
+  background: url(imagenes/lidl.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 20vw;
+  width: auto;
+  margin: 2.5vw;
+}
+
+#dia {
+  position: relative;
+  display: inline-block;
+  background: url(imagenes/dia.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: auto;
+  margin: 3.5vw;
+}
+
+#mercadona {
+  position: relative;
+  display: inline-block;
+  background: url(imagenes/mercadona.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 20vw;
+  width: auto;
+  margin: 2.5vw;
+}
+
+#carrefour {
+  position: relative;
+  display: inline-block;
+  background: url(imagenes/carrefour.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 20vw;
+  width: auto;
+  margin: 2.5vw;
+}
+
+#ahorramas {
+  position: relative;
+  display: inline-block;
+  background: url(imagenes/ahorramas.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 20vw;
+  width: auto;
+  margin: 2.5vw;
+}
+
+.close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 2;
+  background-color: #FFF;
+  padding: 5px 2px 2px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: .2;
+  text-align: center;
+  font-size: 22px;
+  line-height: 10px;
+  border-radius: 50%;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+/***********Responsive**************/
+@media only screen and (min-width: 350px) {
+
+  #imgcentro {
+    width: 30%;
+  }
+
+  #centro h1 {
+    text-align: center;
+  }
+
+
+  #help {
+    width: 8vw;
+    display: block;
+  }
+
+  #menulateral {
+    display: flex;
+    width: auto;
+    background-color: #907486;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width:550px) {
+  #menulateral {
+    display: flex;
+    width: 100px;
+    background-color: #907486;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width:915px){
+  #cuerpo {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: auto;
+}
+}

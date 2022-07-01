@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lista de supermercados</title>
+	<link rel="stylesheet" type="text/css" href="supermercados.css">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@500&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="imagenes/supermarket.png">
+</head>
+<body>
+
+	<!--Esta es la barra de navegacion-->
+	<div>
+   	 	<ul class="side-menu">
+        	<li class="no_selected"><a href="ListaDeLaCompra.html"><div class="Centrado" ><img class="ImagenesIconos" src="imagenes/list.png"><p>Lista de la Compra</p></div></a></li>
+        	<li class="no_selected"><a href="Productos_frecuentes.html"><div class="Centrado" ><img class="ImagenesIconos" src="imagenes/shopping-cart.png"><p>Compras Frecuentes</p></div></a></li>
+        	<li class="selected"><a href="supermercados.html"><div class="Centrado" ><img class="ImagenesIconos" src="imagenes/supermarket.png"><p>Mercado</p></div></a></li>
+    	</ul>
+	</div>
+	
+	<!--Cuerpo-->
+	<div id="cuerpo">
+	
+		<!--Para agregar supermercados-->
+		<div id="centro">
+
+			<!--Información sobre la página-->
+			<div id="help" onclick="prueba()">
+			<img src="imagenes/help.png">
+			</div>
+
+			<div id="modal1" class="modal">
+				<div id="instrucciones">
+				<img id="x" src="imagenes/x.png" >				
+            	<h1>Instrucciones</h1>
+            	<ul>
+ 					<li>1. Puedes agregar tus supermercados en la línea amarilla para que se vayan agregando.</li><br>
+ 					<li>2. Dándole a la equis puedes eliminar el supermercado de la lista.</li><br>
+ 					<li>3. Puedes agregar todos los supermercados que quieras.</li><br>
+            	</ul>
+            	</div>
+            </div>
+
+			<h1>Supermercado favorito</h1>	
+
+			<img id="imgcentro" src="imagenes/mercadopopular.png"><br>
+			<form onsubmit="supermercados()" id="form">
+				<label id="textocentro">Escribe tu supermercados aquí</label>
+				<input type="text" name="supermercado" id="supermercado" required><br>
+				<button class="boton" id="botonsupermercados" onclick="supermercados()">Agregar</button>
+			</form>
+			<!--Supermercados agregados-->
+			<div id="contenedor">
+
+			</div>
+
+	<script src="supermercados.js"></script>
+
+</body>
+</html>

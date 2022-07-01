@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <title>Productos Frecuentes</title>
+    <link rel="stylesheet" href="supermercados.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/shopping-cart.png">
+</head>
+
+<body>
+
+    <!-- div con menú lateral -->
+    <div>
+        <ul class="side-menu">
+            <li class="no_selected"><a href="ListaDeLaCompra.html">
+                    <div class="Centrado"><img class="ImagenesIconos" src="imagenes/list.png">
+                        <p>Lista de la Compra</p>
+                    </div>
+                </a></li>
+            <li class="selected"> <a href="Productos_frecuentes.html">
+                    <div class="Centrado"><img class="ImagenesIconos" src="imagenes/shopping-cart.png">
+                        <p>Compras Frecuentes</p>
+                    </div>
+                </a></li>
+            <li class="no_selected"><a href="supermercados.html">
+                    <div class="Centrado"><img class="ImagenesIconos" src="imagenes/supermarket.png">
+                        <p>Mercado</p>
+                    </div>
+                </a></li>
+        </ul>
+    </div>
+    <!--Información sobre la página-->
+
+    <div id="help" onclick="prueba()">
+        <img src="imagenes/help.png">
+    </div>
+
+    <div id="modal1" class="modal">
+        <div id="instrucciones">
+            <img id="x" src="imagenes/x.png" onclick="cerrarPrueba()">
+            <h1>Instrucciones</h1>
+            <ul>
+                <li>1. Pulsa el botón rojo de la parte inferior para añadir un nuevo producto frecuente.</li><br>
+                <li>2. Se abrirá un cuadro donde podrás introducir un producto que compres frecuentemente.</li><br>
+                <li>3. Puedes elegir los supermercados donde lo compras y el precio en cada uno de ellos.</li><br>
+                <li>4. Guarda el producto pulsando el botón de la parte inferior.</li><br>
+                <li>5. Puedes mandar el producto a la lista de la compra principal con el icono del avión.</li><br>
+                <li>6. También puedes eliminar el producto con el icono de la papelera.</li><br>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="contenidoProductos">
+        <h1>Tus compras habituales </h1>
+        <div id="listaProductos" class="vacia">
+            <div id="modalInput" class="modal">
+                <div id="inputProducts">
+                    <img id="closeModal" src="imagenes/x.png" onclick="cerrarModal()">
+                    <input type="text" placeholder="Añade un nuevo producto" id="addProduct">
+                    <p id="inputText">Elige uno o varios supermercados:</p>
+                    <button id="sendToListButton" class="boton" onclick="saveProduct()">Añadir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="addProductButton" class="boton" onclick="abrirModal()">+</button>
+    <button id="addProductButtonBig" class="boton" onclick="abrirModal()">Añadir</button>
+</body>
+
+<script src="productos_frecuentes_.js"></script>
+
+</html>
