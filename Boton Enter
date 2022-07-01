@@ -1,6 +1,0 @@
-botonEnter.addEventListener('click',() => {
-    const tarea = /* aqui coloca el nombre del input */.value
-    if(tarea) {
-        /*tu funcion de agregar al input*/
-    } /* agregar el input */.value = ''
-}
